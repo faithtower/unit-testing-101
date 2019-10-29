@@ -16,9 +16,9 @@ public class Numbers {
 
     public static boolean isNegative(int num){
         if ( num >= 0 ){
-            return false;
-        }else{
             return true;
+        }else{
+            return false;
         }
     }
 

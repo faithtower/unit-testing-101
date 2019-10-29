@@ -20,6 +20,6 @@ class NumbersTest {
 
     @Test
     void isNegative() {
-        assertTrue(Numbers.isNegative(-1));
+        assertFalse(Numbers.isNegative(-2));
     }
 }

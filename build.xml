@@ -20,7 +20,7 @@
   </path>
   <path id="junit.engine.jupiter.classpath">
 	  <fileset dir="lib/"/>
-</path>
+  </path>
 
   <target name="compile" depends="init"
         description="compile the source">
@@ -30,6 +30,15 @@
         <classpath refid="junit.engine.jupiter.classpath"/>
     </javac>
   </target>
+
+    <target name="dist" depends="compile"
+        description="generate the distribution">
+    <!-- Create the distribution directory -->
+    <mkdir dir="${dist}/lib"/>
+
+    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+    <jar jarfile="${dist}/lib/MyProject-${DSTAMP}.jar" basedir="${build}"/>
+    </target>
 
   <target name="clean"
         description="clean up">
@@ -60,12 +69,12 @@
             <classpath>
                 <!-- the test classes themselves -->
                 <pathelement location="${build}"/>
+                <pathelement location="${dist}"/>
             </classpath>
             <testclasses outputdir="${build}">
                 <fileset dir="${build}"/>
                 <listener type="legacy-brief" sendSysOut="true"/>
                 <listener type="legacy-xml" sendSysErr="true" sendSysOut="true"/>
-
             </testclasses>
         </junitlauncher>
    </target>
