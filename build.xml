@@ -27,6 +27,35 @@
     <delete dir="${dist}"/>
   </target>
   
+  <target name="compile-test" depends="init">
+        <mkdir dir="${build.classes.dir}"/>
+        <javac srcdir="${src.test.dir}"
+           destdir="${build.classes.dir}">
+           <!-- our tests only need JUnit Jupiter engine
+           libraries in our compile classpath for the tests -->
+           <classpath refid="junit.engine.jupiter.classpath"/>
+        </javac>
+    </target>
+  
   <target name="test" description="unit testing">
+       <junitlauncher>
+            <!-- include the JUnit platform related libraries
+            required to run the tests -->
+            <classpath refid="junit.platform.libs.classpath"/>
+
+            <!-- include the JUnit Jupiter engine libraries -->
+            <classpath refid="junit.engine.jupiter.classpath"/>
+
+            <classpath>
+                <!-- the test classes themselves -->
+                <pathelement location="${build.classes.dir}"/>
+            </classpath>
+            <testclasses outputdir="${output.dir}">
+                <fileset dir="${build.classes.dir}"/>
+                <listener type="legacy-brief" sendSysOut="true"/>
+                <listener type="legacy-xml" sendSysErr="true" sendSysOut="true"/>
+
+            </testclasses>
+        </junitlauncher>
    </target>
 </project>
