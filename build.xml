@@ -27,6 +27,6 @@
     <delete dir="${dist}"/>
   </target>
   
-  <tartget name="test" description="unit testing">
+  <target name="test" description="unit testing">
    </target>
 </project>
