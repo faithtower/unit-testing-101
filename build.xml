@@ -16,10 +16,10 @@
   </target>
 
   <path id="junit.platform.libs.classpath">
-	  <fileset dir="${src}/lib/junit-platform-engine-1.4.2.jar/"/>
+	  <fileset dir="lib/junit-platform-engine-1.4.2.jar/"/>
   </path>
   <path id="junit.engine.jupiter.classpath">
-	  <fileset dir="${src}/lib/junit-jupiter-engine-5.4.2.jar/"/>
+	  <fileset dir="lib/junit-jupiter-engine-5.4.2.jar/"/>
 </path>
 
   <target name="compile" depends="init"
